@@ -5,43 +5,65 @@ using UnityEngine.UI;
 
 public class LeagueClicker : MonoBehaviour
 {
-    // trackers
-    public int totalLP;
-    public int gainLP;
-    public int loseLP;
+    [Header ("Teackers")]
+    public int currentLP;
+    public int totalGainLP;
+    public int totalLoseLP;
+    public int gamesWon;
+    public int gamesLost;
 
-    // button to press to gain lp
+    [Header("Parameters")]
     public KeyCode playButton;
-
-    // text elements to display 
     public Text lpText;
+    public int gainLP;
+    public int lossLP;
+    public int decayLP;
 
-    // Start is called before the first frame update
     void Start()
     {
         // every second called loseLP and decay lp
-        InvokeRepeating("LoseLP", 0, 1);
+        InvokeRepeating("DecayLP", 0, 1);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // update text
-        lpText.text = "LP: " + totalLP.ToString();
-        // gain lp when playing games
+        // update text on screen
+        lpText.text = "LP: " + currentLP.ToString();
+
+        // play a lol game
         if(Input.GetKeyDown(playButton))
         {
-            GainLP();
+            // roll the dice of gods and see if you win your league game
+            float wr = Random.Range(0f, 100f);
+            if(wr > 49f)
+            {
+                GainLP();
+            }
+            else if(wr < 49f)
+            {
+                LoseLP();
+            }
         }
     }
 
     void GainLP()
     {
-        totalLP += gainLP;
+        // add to current lp as WIN, track total gain
+        currentLP += gainLP;
+        totalGainLP += gainLP;
     }
 
     void LoseLP()
     {
-        totalLP -= loseLP;
+        // sub to current lp as LOSS, track total loss
+        currentLP -= lossLP;
+        totalLoseLP -= lossLP;
+    }
+
+    void DecayLP()
+    {
+        // sub to current lp from DECAY, track total loss
+        currentLP -= decayLP;
+        totalLoseLP -= decayLP;
     }
 }

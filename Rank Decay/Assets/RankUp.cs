@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class RankUp : MonoBehaviour
 {
+    [Header("Trackers")]
+    public int totalLP;
+
+    [Header ("Parameters")]
     // lp amounts to rank up
     public int bronzeLPCap;
     public int silverLPCap;
@@ -19,7 +23,6 @@ public class RankUp : MonoBehaviour
     // rank text and lp tracker
     public Text rankText;
     public LeagueClicker leagueClicker;
-    public int totalLP;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +32,7 @@ public class RankUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        totalLP = leagueClicker.totalLP;
+        totalLP = leagueClicker.currentLP;
         if (totalLP > challengerLPCap)
         {
             rankText.text = "Rank: Challenger" ;
