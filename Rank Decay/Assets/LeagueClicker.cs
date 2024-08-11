@@ -11,13 +11,16 @@ public class LeagueClicker : MonoBehaviour
     public int totalLoseLP;
     public int gamesWon;
     public int gamesLost;
+    // set by other script
+    public int gainRankLP;
+    public int lossRankLP;
+    public int decayRankLP;
+    public int wrRank;
 
     [Header("Parameters")]
+    public RankUp rankUp;
     public KeyCode playButton;
     public Text lpText;
-    public int gainLP;
-    public int lossLP;
-    public int decayLP;
 
     void Start()
     {
@@ -35,35 +38,43 @@ public class LeagueClicker : MonoBehaviour
         {
             // roll the dice of gods and see if you win your league game
             float wr = Random.Range(0f, 100f);
-            if(wr > 49f)
+            if(wr > wrRank)
             {
-                GainLP();
+                GainLP(gainRankLP);
             }
-            else if(wr < 49f)
+            else if(wr < wrRank)
             {
-                LoseLP();
+                LoseLP(lossRankLP);
             }
         }
     }
 
-    void GainLP()
+    void GainLP(int rankGainLP)
     {
         // add to current lp as WIN, track total gain
-        currentLP += gainLP;
-        totalGainLP += gainLP;
+        currentLP += rankGainLP;
+        totalGainLP += rankGainLP;
+        Debug.Log(rankGainLP.ToString());
     }
 
-    void LoseLP()
+    void LoseLP(int rankLossLP)
     {
         // sub to current lp as LOSS, track total loss
-        currentLP -= lossLP;
-        totalLoseLP -= lossLP;
+        currentLP -= rankLossLP;
+        totalLoseLP -= rankLossLP;
+        Debug.Log(rankLossLP.ToString());
     }
 
     void DecayLP()
     {
         // sub to current lp from DECAY, track total loss
-        currentLP -= decayLP;
-        totalLoseLP -= decayLP;
+        currentLP -= decayRankLP;
+        totalLoseLP -= decayRankLP;
+        Debug.Log(decayRankLP.ToString());
+    }
+
+    void SetDecayLP(int rankDecayLP)
+    {
+        decayRankLP = rankDecayLP;
     }
 }

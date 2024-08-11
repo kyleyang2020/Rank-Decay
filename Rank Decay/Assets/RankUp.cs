@@ -5,6 +5,22 @@ using UnityEngine.UI;
 
 public class RankUp : MonoBehaviour
 {
+    public class Rank
+    {
+        public int minimumLPGain, maximumLPGain, minimumLPLoss, maximumLPLoss, decayLP;
+        public float winrate;
+
+        public Rank(int _minimumLPGain, int _maximumLPGain, int _minimumLPLoss, int _maximumLPLoss, int _decayLP, float _winrate)
+        {
+            minimumLPGain = _minimumLPGain;
+            maximumLPGain = _maximumLPGain;
+            minimumLPLoss = _minimumLPLoss;
+            maximumLPLoss = _maximumLPLoss;
+            decayLP = _decayLP;
+            winrate = _winrate;
+        }
+    }
+
     [Header("Trackers")]
     public int totalLP;
 
@@ -19,17 +35,27 @@ public class RankUp : MonoBehaviour
     public int masterLPCap;
     public int grandmasterLPCap;
     public int challengerLPCap;
-
-    // rank text and lp tracker
     public Text rankText;
     public LeagueClicker leagueClicker;
 
-    // Start is called before the first frame update
+    [Header("Ranks")]
+    // public Rank(int minimumLPGain, int maximumLPGain, int minimumLPLoss, int maximumLPLoss, int decayLP, float winrate)
+    public Rank Iron = new Rank(20, 50, 15, 25, 10, 80f);
+    public Rank Bronze = new Rank(20, 50, 15, 25, 10, 80f);
+    public Rank Silver = new Rank(20, 50, 15, 25, 10, 80f);
+    public Rank Gold = new Rank(20, 50, 15, 25, 10, 80f);
+    public Rank Platinum = new Rank(20, 50, 15, 25, 10, 80f);
+    public Rank Emerald = new Rank(20, 50, 15, 25, 10, 80f);
+    public Rank Diamond = new Rank(20, 50, 15, 25, 10, 80f);
+    public Rank Master = new Rank(20, 50, 15, 25, 10, 80f);
+    public Rank GrandMaster = new Rank(20, 50, 15, 25, 10, 80f);
+    public Rank Challenger = new Rank(20, 50, 15, 25, 10, 80f);
+
     void Start()
     {
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         totalLP = leagueClicker.currentLP;
