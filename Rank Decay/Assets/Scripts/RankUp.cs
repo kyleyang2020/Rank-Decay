@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,7 +37,7 @@ public class RankUp : MonoBehaviour
     public int masterLPCap;
     public int grandmasterLPCap;
     public int challengerLPCap;
-    public Text rankText;
+    public TextMeshProUGUI rankText;
     public LeagueClicker leagueClicker;
 
     [Header("Ranks")]
@@ -108,7 +109,7 @@ public class RankUp : MonoBehaviour
         else if (totalLP >= 0)
         {
             rankText.text = "Rank: Iron";
-            currentRank = Bronze;
+            currentRank = Iron;
         }
 
     }
