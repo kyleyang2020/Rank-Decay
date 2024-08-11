@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static RankUp;
@@ -10,8 +11,8 @@ public class LeagueClicker : MonoBehaviour
     public int currentLP;
     public int totalGainLP;
     public int totalLoseLP;
-    public int gamesWon;
-    public int gamesLost;
+    public int gamesWon = 1;
+    public int totalGames = 1;
     // set by other script
     public int gainRankLP;
     public int lossRankLP;
@@ -21,7 +22,10 @@ public class LeagueClicker : MonoBehaviour
     [Header("Parameters")]
     public RankUp rankUp;
     public KeyCode playButton;
-    public Text lpText;
+    public TextMeshProUGUI lpText;
+    public TextMeshProUGUI lpGainText;
+    public TextMeshProUGUI lpLostText;
+    public TextMeshProUGUI wrText;
 
     void Start()
     {
@@ -31,21 +35,28 @@ public class LeagueClicker : MonoBehaviour
 
     void Update()
     {
+
         // update text on screen
         lpText.text = "LP: " + currentLP.ToString();
+        lpGainText.text = "Total LP Gained: " + totalGainLP.ToString();
+        lpLostText.text = "Total LP Lost: " + totalLoseLP.ToString();
+        wrText.text = "Winrate: " + (gamesWon/totalGames).ToString() + "%";
 
         // play a lol game
-        if(Input.GetKeyDown(playButton))
+        if (Input.GetKeyDown(playButton))
         {
             // roll the dice of gods and see if you win your league game
             float wr = Random.Range(0f, 100f);
             if(wr > wrRank)
             {
                 GainLP();
+                gamesWon++;
+                totalGames++;
             }
             else if(wr < wrRank)
             {
                 LoseLP();
+                totalGames++;
             }
         }
     }
