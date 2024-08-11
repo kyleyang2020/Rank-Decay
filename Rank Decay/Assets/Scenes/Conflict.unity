@@ -624,7 +624,7 @@ MonoBehaviour:
   masterLPCap: 800
   grandmasterLPCap: 900
   challengerLPCap: 1000
-  rankText: {fileID: 1543087065}
+  rankText: {fileID: 0}
   leagueClicker: {fileID: 689920283}
 --- !u!114 &689920283
 MonoBehaviour:
@@ -649,10 +649,10 @@ MonoBehaviour:
   wrRank: 0
   rankUp: {fileID: 689920282}
   playButton: 32
-  lpText: {fileID: 1305970717}
-  lpGainText: {fileID: 1413684656}
-  lpLostText: {fileID: 464641277}
-  wrText: {fileID: 2084389037}
+  lpText: {fileID: 0}
+  lpGainText: {fileID: 0}
+  lpLostText: {fileID: 0}
+  wrText: {fileID: 0}
 --- !u!4 &689920284
 Transform:
   m_ObjectHideFlags: 0
