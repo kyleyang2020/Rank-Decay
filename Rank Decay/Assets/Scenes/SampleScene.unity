@@ -508,9 +508,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684046dfa61b03a4992f36d71979e8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalLP: 0
-  gainLP: 10
-  loseLP: 1
+  currentLP: 0
+  totalGainLP: 0
+  totalLoseLP: 0
+  gamesWon: 0
+  gamesLost: 0
+  gainRankLP: 0
+  lossRankLP: 0
+  decayRankLP: 0
+  wrRank: 0
+  rankUp: {fileID: 1156179903}
   playButton: 32
   lpText: {fileID: 1091794108}
 --- !u!114 &1156179903
@@ -525,6 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07364510d0109d74cb8d8d3e7003c9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalLP: 0
   bronzeLPCap: 100
   silverLPCap: 200
   goldLPCap: 300
@@ -536,7 +544,6 @@ MonoBehaviour:
   challengerLPCap: 1000
   rankText: {fileID: 695088982}
   leagueClicker: {fileID: 1156179902}
-  totalLP: 0
 --- !u!4 &1156179904
 Transform:
   m_ObjectHideFlags: 0
