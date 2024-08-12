@@ -17,7 +17,7 @@ public class LeagueClicker : MonoBehaviour
     public int gainRankLP;
     public int lossRankLP;
     public int decayRankLP;
-    public int wrRank;
+    public float wrRankPercent;
 
     [Header("Parameters")]
     public RankUp rankUp;
@@ -35,25 +35,26 @@ public class LeagueClicker : MonoBehaviour
 
     void Update()
     {
-
+        // update winrate
+        wrRankPercent = rankUp.currentRank.winrate;
         // update text on screen
         lpText.text = "LP: " + currentLP.ToString();
         lpGainText.text = "Total LP Gained: " + totalGainLP.ToString();
         lpLostText.text = "Total LP Lost: " + totalLoseLP.ToString();
-        wrText.text = "Winrate: " + (gamesWon/totalGames).ToString() + "%";
+        wrText.text = "Winrate: " + (((float)gamesWon/(float)totalGames) * 100).ToString() + "%";
 
         // play a lol game
         if (Input.GetKeyDown(playButton))
         {
             // roll the dice of gods and see if you win your league game
             float wr = Random.Range(0f, 100f);
-            if(wr > wrRank)
+            if(wr < wrRankPercent)
             {
                 GainLP();
                 gamesWon++;
                 totalGames++;
             }
-            else if(wr < wrRank)
+            else if(wr > wrRankPercent)
             {
                 LoseLP();
                 totalGames++;

@@ -42,16 +42,16 @@ public class RankUp : MonoBehaviour
 
     [Header("Ranks")]
     // public Rank(int minimumLPGain, int maximumLPGain, int minimumLPLoss, int maximumLPLoss, int decayLP, float winrate)
-    public Rank Iron = new Rank(20, 55, 15, 25, 2, 80f);
-    public Rank Bronze = new Rank(20, 50, 15, 25, 4, 80f);
-    public Rank Silver = new Rank(20, 50, 15, 25, 4, 80f);
-    public Rank Gold = new Rank(18, 40, 15, 25, 4, 70f);
-    public Rank Platinum = new Rank(18, 40, 15, 25, 6, 70f);
-    public Rank Emerald = new Rank(18, 35, 15, 25, 6, 70f);
-    public Rank Diamond = new Rank(17, 35, 15, 25, 6, 60f);
-    public Rank Master = new Rank(17, 30, 15, 25, 8, 60f);
-    public Rank GrandMaster = new Rank(17, 30, 15, 25, 8, 60f);
-    public Rank Challenger = new Rank(16, 25, 15, 25, 8, 51f);
+    public Rank Iron = new Rank(20, 55, 15, 25, 2, 65f);
+    public Rank Bronze = new Rank(20, 50, 15, 25, 4, 65f);
+    public Rank Silver = new Rank(20, 50, 15, 25, 4, 65f);
+    public Rank Gold = new Rank(18, 40, 15, 25, 4, 55f);
+    public Rank Platinum = new Rank(18, 40, 15, 25, 6, 55f);
+    public Rank Emerald = new Rank(18, 35, 15, 25, 6, 50f);
+    public Rank Diamond = new Rank(17, 35, 15, 25, 6, 40f);
+    public Rank Master = new Rank(17, 30, 15, 25, 8, 40f);
+    public Rank GrandMaster = new Rank(17, 30, 15, 25, 8, 40f);
+    public Rank Challenger = new Rank(16, 25, 15, 25, 8, 40f);
 
     void Start()
     {

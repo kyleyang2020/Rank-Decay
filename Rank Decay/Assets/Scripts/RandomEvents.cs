@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,7 @@ public class RandomEvents : MonoBehaviour
 
     [Header("UI Components")]
     public Canvas canvas;
-    public Text eventText;
+    public TextMeshProUGUI eventText;
 
     private float eventTimer = 5f;
 
@@ -58,16 +59,19 @@ public class RandomEvents : MonoBehaviour
             case EventType.TeammateBoost:
                 // originalGainLP = leagueClicker.totalGainLP;
                 // //Current LP rate increase by 2          HELP ME WITH THIS
-                // leagueClicker.currentLP += 2;
+                leagueClicker.currentLP += 100;
+                leagueClicker.totalGainLP += 100;
                 break;
             case EventType.MentalFatigue:
                 // Subtract current LP by -300
-                leagueClicker.currentLP -= 500;
+                leagueClicker.currentLP -= 300;
+                leagueClicker.totalLoseLP -= 300;
                 break;
             case EventType.LosingStreak:
                 // // Decrease rate of currentLP by -20
                 // originalLossLP = leagueClicker.totalLoseLP;      HELP ME WITH THIS
-                // leagueClicker.currentLP -= 100;
+                leagueClicker.currentLP -= 500;
+                leagueClicker.totalLoseLP -= 500;
                 break;
         }
         // Set a timer to end the event
@@ -115,11 +119,11 @@ public class RandomEvents : MonoBehaviour
         switch (eventType)
         {
             case EventType.TeammateBoost:
-                return "Teammate Boost!";
+                return "Teammate Boost! +100LP";
             case EventType.MentalFatigue:
-                return "You're tired, so you stop playing...";
+                return "You're tired, so you stop playing... -300LP";
             case EventType.LosingStreak:
-                return "On a losing streak...";
+                return "On a losing streak... -500LP";
             default:
                 return "";
         }
