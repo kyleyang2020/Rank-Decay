@@ -53,26 +53,29 @@ public class RandomEvents : MonoBehaviour
         // Display event text
         DisplayEventText(randomEvent.Type);
 
-        // Apply the event effects
-        switch (randomEvent.Type)
+        if (leagueClicker.currentLP > 0)
         {
-            case EventType.TeammateBoost:
-                // originalGainLP = leagueClicker.totalGainLP;
-                // //Current LP rate increase by 2          HELP ME WITH THIS
-                leagueClicker.currentLP += 100;
-                leagueClicker.totalGainLP += 100;
-                break;
-            case EventType.MentalFatigue:
-                // Subtract current LP by -300
-                leagueClicker.currentLP -= 300;
-                leagueClicker.totalLoseLP -= 300;
-                break;
-            case EventType.LosingStreak:
-                // // Decrease rate of currentLP by -20
-                // originalLossLP = leagueClicker.totalLoseLP;      HELP ME WITH THIS
-                leagueClicker.currentLP -= 500;
-                leagueClicker.totalLoseLP -= 500;
-                break;
+            // Apply the event effects
+            switch (randomEvent.Type)
+            {
+                case EventType.TeammateBoost:
+                    // originalGainLP = leagueClicker.totalGainLP;
+                    // //Current LP rate increase by 2          HELP ME WITH THIS
+                    leagueClicker.currentLP += 100;
+                    leagueClicker.totalGainLP += 100;
+                    break;
+                case EventType.MentalFatigue:
+                    // Subtract current LP by -300
+                    leagueClicker.currentLP -= 300;
+                    leagueClicker.totalLoseLP -= 300;
+                    break;
+                case EventType.LosingStreak:
+                    // // Decrease rate of currentLP by -20
+                    // originalLossLP = leagueClicker.totalLoseLP;      HELP ME WITH THIS
+                    leagueClicker.currentLP -= 500;
+                    leagueClicker.totalLoseLP -= 500;
+                    break;
+            }
         }
         // Set a timer to end the event
         Invoke(nameof(EndEventDelayed), randomEvent.Duration);
